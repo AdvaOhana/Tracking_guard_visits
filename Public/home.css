@@ -6,7 +6,7 @@ body{
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     background: rgb(17, 45, 78);
 }
-#home_page{
+#home_page_headLine{
     display: flex;
     justify-content: center;
     width: fit-content;
@@ -14,7 +14,7 @@ body{
     margin-top: 30px;
     color: rgb(219, 226, 239);
 }
-#button{
+#buttons{
     display: flex;
     align-items: center;
     margin-top: 70px;
@@ -36,4 +36,43 @@ button:hover {
     color: rgb(17, 45, 78);
     background: rgb(219, 226, 239);
     border: 2px solid rgb(249, 247, 247);
+}
+#headLine-manager{
+    text-align: center;
+    color: rgb(219, 226, 239);
+    margin-top: 30px;
+}
+#points-list{
+    display: block;
+    justify-content: center;
+    width: fit-content;
+    margin: auto;
+    margin-top: 30px;
+    color: rgb(219, 226, 239);
+    text-align: center;
+    border: 1px solid rgb(249, 247, 247);
+    border-radius: 5px;
+}
+#tracking-visits{
+    display: block;
+    justify-content: center;
+    width: fit-content;
+    margin: auto;
+    margin-top: 30px;
+    text-align: center;
+    color: rgb(219, 226, 239);
+    border: 1px solid rgb(249, 247, 247);
+    border-radius: 5px;
+}
+td,th{
+    padding: 10px;
+    text-align: center;
+    border: 1px solid rgb(249, 247, 247);
+}
+#BackButton{
+    display: flex;
+    margin: 400px auto 0 auto;
+}
+a{
+    text-decoration: none;
 }
