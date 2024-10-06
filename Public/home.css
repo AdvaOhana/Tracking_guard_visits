@@ -1,28 +1,36 @@
 *{
     padding: 0;
     margin: 0;
+    box-sizing: border-box;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 body{
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
     background: rgb(17, 45, 78);
+    padding: 32px;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+}
+a{
+    text-decoration: none;
 }
 #home_page_headLine{
-    display: flex;
-    justify-content: center;
-    width: fit-content;
+    display: block;
     margin: auto;
-    margin-top: 30px;
+    padding: 12px;
+    justify-content: center;
     color: rgb(219, 226, 239);
+    width: fit-content;
+    box-shadow: 0 0 10px 5px rgb(219, 226, 239) ;
+    border-radius: 10px;
 }
 #buttons{
     display: flex;
-    align-items: center;
-    margin-top: 70px;
+    margin-top: 80px;
     justify-content: space-evenly;
 
 }
 button{
-    font-family: "Poppins", sans-serif;
     padding: 10px 25px;
     cursor: pointer;
     transition: all 0.3s ease-out;
@@ -40,18 +48,16 @@ button:hover {
 #headLine-manager{
     text-align: center;
     color: rgb(219, 226, 239);
-    margin-top: 30px;
 }
 #points-list{
     display: block;
     justify-content: center;
+    text-align: center;
     width: fit-content;
     margin: auto;
-    margin-top: 30px;
-    color: rgb(219, 226, 239);
-    text-align: center;
-    border: 1px solid rgb(249, 247, 247);
-    border-radius: 5px;
+    margin-top: 50px;
+    color: rgb(249, 247, 247);
+
 }
 #tracking-visits{
     display: block;
@@ -60,19 +66,36 @@ button:hover {
     margin: auto;
     margin-top: 30px;
     text-align: center;
-    color: rgb(219, 226, 239);
+    color:rgb(249, 247, 247);
     border: 1px solid rgb(249, 247, 247);
     border-radius: 5px;
 }
+table{
+    text-align: center;
+    margin: auto;
+    padding: 10px;
+}
 td,th{
     padding: 10px;
-    text-align: center;
     border: 1px solid rgb(249, 247, 247);
 }
 #BackButton{
     display: flex;
-    margin: 400px auto 0 auto;
+    margin: auto;
+    margin-top: 10px;
+    border: 1px solid rgb(249, 247, 247);
 }
-a{
-    text-decoration: none;
+.NewPoint-Container{
+    text-align: center;
+    color:rgb(249, 247, 247);
+    margin: 20px;
+    border: 1px solid rgb(249, 247, 247);
+}
+.NewPoint-Container > h3{
+    padding: 15px ;
+}
+.NewPoint-Container > button{
+    display: block;
+    margin: auto;
+    margin-top: 10px;
 }

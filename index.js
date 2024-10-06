@@ -2,17 +2,62 @@ const port = 4325;
 
 const express = require("express");
 const path = require('path');
-const cors = require('cors');
 const app = express();
 const bodyParser = require("body-parser");
 
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(cors());
 app.use(bodyParser.json());
 app.use(express.json());
 app.use(express.static(path.join(__dirname, "public")));
 
+app.get("/", (req, res) => {
+    res.status(200).sendFile(path.join(__dirname, "public/home.html"));
+})
+app.get("/manager", (req, res) => {
+    res.status(200).sendFile(path.join(__dirname, "public/manager.html"));
+})
+app.get("/guard", (req, res) => {
+    res.status(200).sendFile(path.join(__dirname, "public/guard.html"));
+})
+
+let cnt=0;
+let points=[];
+
+app.get('/pointsList', (req, res) => {
+    res.status(200).json(points);
+})
+app.post('/CreatePoints', (req, res) => {
+    let point={};
+    point.id = cnt++;
+    let name=req.body.name;
+    points.forEach((point)=>{
+    if (name===point.name){
+        return res.status(400).send("Name already exists!");
+    }
+    })
+    points.push(point);
+
+    res.status(200).send(point);
+})
+app.patch('/EditPoints/:id', (req, res) => {
+    let id=req.params.id;
+    let newName= req.body.name;
+    let oldName= points[id].name;
+    points.forEach((point)=>{
+        if (oldName===newName) {
+            return res.status(400).send("there is already a point with that name")
+        }
+    })
+    points[id].name = newName;
+
+    res.status(200).send("Updated point");
+})
+app.delete('/DeletePoints/:id', (req, res) => {
+    let id=req.params.id;
+    points.splice(id, 1);
+    res.status(200).send("Deleted point");
+})
 
 app.listen(port, () => {
-    console.log(`Server running on port ${port}`);
+    console.log(`Now listening on port http://localhost:${port}`);
 })

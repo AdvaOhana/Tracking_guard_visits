@@ -4,27 +4,30 @@
     <meta charset="UTF-8">
     <title>manager</title>
     <link rel="stylesheet" href="home.css">
-    <script src="home.js"></script>
+    <script src="home.js" defer></script>
 </head>
 <body>
-    <h2 id="headLine-manager">Manage guarding points</h2>
+    <h2 id="headLine-manager">Manage guards points</h2>
     <div id="points-list">
     <h3>List of points</h3>
     <table>
         <thead>
         <tr>
+            <th>#</th>
             <th>Point name</th>
-            <th>Location</th>
+            <th>Edit</th>
+            <th>Delete</th>
         </tr>
         </thead>
-        <tbody id="MainTable">
-
-        </tbody>
+        <tbody id="MainTable"></tbody>
     </table>
-        <div class = "NewPoint-Container">
-
-        </div>
     </div>
+        <div class = "NewPoint-Container">
+            <h3>Add new point</h3>
+            <label for="PointName">Point Name:</label>
+            <input type="text" id="PointName" placeholder="Enter point name">
+            <button>Save</button>
+        </div>
     <div id="tracking-visits">
     <h3>Tracking guards visits</h3>
 
