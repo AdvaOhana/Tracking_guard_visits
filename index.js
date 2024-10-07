@@ -27,24 +27,32 @@ app.get('/pointsList', (req, res) => {
     res.status(200).json(points);
 })
 app.post('/CreatePoints', (req, res) => {
+    let exeist= false;
+    let name=req.body.name;
+    for (let i=0; i<points.length; i++) {
+    if (name===points[i].name){
+         exeist=true;
+         break;
+    }}
+    if (exeist){
+        res.status(400).json({error:"Name is already in use"});
+    }
+    else {
     let point={};
     point.id = cnt++;
-    let name=req.body.name;
-    points.forEach((point)=>{
-    if (name===point.name){
-        return res.status(400).send("Name already exists!");
-    }
-    })
+    point.name=name;
     points.push(point);
 
     res.status(200).send(point);
+    }
+
 })
 app.patch('/EditPoints/:id', (req, res) => {
     let id=req.params.id;
     let newName= req.body.name;
     let oldName= points[id].name;
     points.forEach((point)=>{
-        if (oldName===newName) {
+        if (point.name===newName) {
             return res.status(400).send("there is already a point with that name")
         }
     })
