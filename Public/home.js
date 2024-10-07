@@ -2,19 +2,18 @@ async function getPoints() {
     let url= "/pointsList";
     let res = await fetch(url);
     let data = await res.json();
-    let i =1;
     let row = "";
-    for(let point of data){
+    for(let idx in data){
+        let point = data[idx];
         row += "<tr>";
-        row += `<td>${i++}</td>`;
+        row += `<td>${idx}</td>`;
         row += `<td>${point.name}</td>`;
         row += `<td><button>Edit</button></td>`;
-        row += `<td><button>Delete</button></td>`;
+        row += `<td><button onclick="removePoint(${idx})">Delete</button></td>`;
         row += "</tr>";
     }
     document.getElementById("MainTable").innerHTML = row;
 }
-
 async function addPoints() {
     let pointName = document.getElementById("PointName").value;
     let url= "/CreatePoints";
@@ -26,8 +25,21 @@ async function addPoints() {
         body:JSON.stringify({name:pointName}),
     });
     let data = await res.json();
-    if (data.error){
-        alert(data.error);
+    if (data.message){
+        alert(data.message);
     }
     await getPoints();
+}
+async function removePoint(idx) {
+    let url= "/DeletePoints";
+    let res= await fetch(url,{
+        method:'DELETE',
+        headers:{
+            "Content-Type": 'application/json'
+        },
+        body:JSON.stringify({id:idx})
+    })
+    let data = await res.json();
+    await getPoints();
+    alert(data.message);
 }

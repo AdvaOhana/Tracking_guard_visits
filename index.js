@@ -27,15 +27,15 @@ app.get('/pointsList', (req, res) => {
     res.status(200).json(points);
 })
 app.post('/CreatePoints', (req, res) => {
-    let exeist= false;
+    let exists= false;
     let name=req.body.name;
     for (let i=0; i<points.length; i++) {
-    if (name===points[i].name){
-         exeist=true;
+    if (name===points[i].name || (!name)){
+        exists=true;
          break;
     }}
-    if (exeist){
-        res.status(400).json({error:"Name is already in use"});
+    if (exists){
+        res.status(400).json({message:"Name is already in use"});
     }
     else {
     let point={};
@@ -60,10 +60,10 @@ app.patch('/EditPoints/:id', (req, res) => {
 
     res.status(200).send("Updated point");
 })
-app.delete('/DeletePoints/:id', (req, res) => {
-    let id=req.params.id;
+app.delete('/DeletePoints', (req, res) => {
+    let id=req.body.id;
     points.splice(id, 1);
-    res.status(200).send("Deleted point");
+    res.status(200).json({message:"Deleted point"});
 })
 
 app.listen(port, () => {
