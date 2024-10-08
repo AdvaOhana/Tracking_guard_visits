@@ -77,3 +77,13 @@ function backButton() {
     document.getElementById("EditPoint-Container").style.display="none";
     document.getElementById("NewPoint-Container").style.display="block";
 }
+async function guardPoints() {
+    let url = "/pointsList";
+    let res = await fetch(url);
+    let data = await res.json();
+    let s = "";
+    for (let point_id in data) {
+        s += `<option value="${data[point_id].id}">${data[point_id].name}</option>`;
+    }
+    document.getElementById("guardPointSelect").innerHTML = s;
+}
