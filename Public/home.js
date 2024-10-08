@@ -53,7 +53,8 @@ function showEditForm(idx) {
             `<h3>Edit point</h3>
             <label for="EditPointName">Point Name:</label>
             <input type="text" id="EditPointName" placeholder="Enter new name">
-            <button onclick="editPoint(${idx})">Edit</button>`
+            <button onclick="editPoint(${idx})">Edit</button>
+            <button onclick="backButton()">Back</button>`
 
     document.getElementById("EditPoint-Container").style.display="block";
     document.getElementById("EditPoint-Container").innerHTML= editForm;
@@ -71,4 +72,8 @@ async function editPoint(idx) {
     let data = await res.json();
     await getPoints();
    setTimeout(()=>{alert(data.message);},500)
+}
+function backButton() {
+    document.getElementById("EditPoint-Container").style.display="none";
+    document.getElementById("NewPoint-Container").style.display="block";
 }
