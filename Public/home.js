@@ -8,7 +8,7 @@ async function getPoints() {
         row += "<tr>";
         row += `<td>${idx}</td>`;
         row += `<td>${point.name}</td>`;
-        row += `<td><button>Edit</button></td>`;
+        row += `<td><button onclick="showEditForm()">Edit</button></td>`;
         row += `<td><button onclick="removePoint(${idx})">Delete</button></td>`;
         row += "</tr>";
     }
@@ -42,4 +42,15 @@ async function removePoint(idx) {
     let data = await res.json();
     await getPoints();
     alert(data.message);
+}
+function showEditForm() {
+    document.getElementById("NewPoint-Container").style.display="none";
+    const editForm =
+            `<h3>Edit point</h3>
+            <label for="EditPointName">Point Name:</label>
+            <input type="text" id="EditPointName" placeholder="Enter new name">
+            <button onclick="editPoint()">Edit</button>`
+
+    document.getElementById("EditPoint-Container").style.display="block";
+    document.getElementById("EditPoint-Container").innerHTML= editForm;
 }

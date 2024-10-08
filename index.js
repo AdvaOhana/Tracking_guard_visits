@@ -47,18 +47,24 @@ app.post('/CreatePoints', (req, res) => {
     }
 
 })
-app.patch('/EditPoints/:id', (req, res) => {
-    let id=req.params.id;
+app.patch('/EditPoints', (req, res) => {
+    let exists= false;
+    let id=req.body.id;
     let newName= req.body.name;
-    let oldName= points[id].name;
-    points.forEach((point)=>{
-        if (point.name===newName) {
-            return res.status(400).send("there is already a point with that name")
+    // let oldName= points[id].name;
+    for (let i=0; i<points.length; i++) {
+        if (point[i].name===newName) {
+            exists=true;
+            break;
         }
-    })
+    }
+    if (exists){return res.status(400).json({message:"there is already a point with that name"})}
+    else{
     points[id].name = newName;
 
     res.status(200).send("Updated point");
+
+    }
 })
 app.delete('/DeletePoints', (req, res) => {
     let id=req.body.id;
