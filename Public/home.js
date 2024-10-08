@@ -8,7 +8,7 @@ async function getPoints() {
         row += "<tr>";
         row += `<td>${idx}</td>`;
         row += `<td>${point.name}</td>`;
-        row += `<td><button onclick="showEditForm()">Edit</button></td>`;
+        row += `<td><button onclick="showEditForm(${idx})">Edit</button></td>`;
         row += `<td><button onclick="removePoint(${idx})">Delete</button></td>`;
         row += "</tr>";
     }
@@ -16,6 +16,10 @@ async function getPoints() {
 }
 async function addPoints() {
     let pointName = document.getElementById("PointName").value;
+    if (!pointName) {
+        alert("Please enter a valid point");
+        return;
+    }
     let url= "/CreatePoints";
     let res = await fetch(url,{
         method:'POST',
@@ -41,16 +45,30 @@ async function removePoint(idx) {
     })
     let data = await res.json();
     await getPoints();
-    alert(data.message);
+    setTimeout(()=>{alert(data.message);},500)
 }
-function showEditForm() {
+function showEditForm(idx) {
     document.getElementById("NewPoint-Container").style.display="none";
     const editForm =
             `<h3>Edit point</h3>
             <label for="EditPointName">Point Name:</label>
             <input type="text" id="EditPointName" placeholder="Enter new name">
-            <button onclick="editPoint()">Edit</button>`
+            <button onclick="editPoint(${idx})">Edit</button>`
 
     document.getElementById("EditPoint-Container").style.display="block";
     document.getElementById("EditPoint-Container").innerHTML= editForm;
+}
+async function editPoint(idx) {
+    let newName= document.getElementById("EditPointName").value;
+    let url= `/EditPoints/${idx}`;
+    let res = await fetch(url,{
+        method:'PATCH',
+        headers:{
+            "Content-Type": 'application/json'
+        },
+        body:JSON.stringify({name:newName}),
+    })
+    let data = await res.json();
+    await getPoints();
+   setTimeout(()=>{alert(data.message);},500)
 }
