@@ -115,3 +115,7 @@ footer{
     right: 20px;
     bottom: 20px;
 }
+.headLine-guard{
+    text-align: center;
+    color: rgb(219, 226, 239);
+}
