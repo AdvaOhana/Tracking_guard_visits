@@ -6,7 +6,7 @@ async function getPoints() {
     for(let idx in data){
         let point = data[idx];
         row += "<tr>";
-        row += `<td>${idx}</td>`;
+        row += `<td>${Number(idx)+1}</td>`;
         row += `<td>${point.name}</td>`;
         row += `<td><button onclick="showEditForm(${idx})">Edit</button></td>`;
         row += `<td><button onclick="removePoint(${idx})">Delete</button></td>`;
@@ -86,4 +86,18 @@ async function guardPoints() {
         s += `<option value="${data[point_id].id}">${data[point_id].name}</option>`;
     }
     document.getElementById("guardPointSelect").innerHTML = s;
+}
+async function visitPoints() {
+    let id=document.getElementById("guardPointSelect").value;
+
+    let url= "/guardVisits";
+    let res = await fetch(url,{
+        method:'POST',
+        headers:{
+            "Content-Type": 'application/json'
+        },
+        body:JSON.stringify({id})
+    });
+    let data = await res.json();
+    setTimeout(()=>{alert(data.message);},500)
 }
