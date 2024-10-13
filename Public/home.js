@@ -121,3 +121,7 @@ async function getVisits(){
     }
     document.getElementById("VisitTable").innerHTML = row;
 }
+async function showAllTables() {
+    await getVisits();
+    await getPoints();
+}
