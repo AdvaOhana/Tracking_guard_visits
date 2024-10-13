@@ -68,6 +68,23 @@ app.delete('/DeletePoints', (req, res) => {
     points.splice(id, 1);
     res.status(200).json({message:"Deleted point"});
 })
+let visits=[];
+app.get('/guardVisits', (req, res) => {
+    res.status(200).json(visits);
+})
+app.post('/guardVisits', (req, res) => {
+    let date= new Date();
+    let id=Number( req.body.id);
+    let visit={};
+    let point= points.find((point)=>{
+      return  id===point.id
+    })
+    visit.point=point;
+    visit.date= date.toLocaleDateString()
+    visit.time= date.toLocaleTimeString()
+    visits.push(visit);
+    res.status(200).json({message:"visit submitted successfully !"});
+})
 
 app.listen(port, () => {
     console.log(`Now listening on port http://localhost:${port}`);
