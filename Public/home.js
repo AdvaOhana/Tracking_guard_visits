@@ -101,3 +101,23 @@ async function visitPoints() {
     let data = await res.json();
     setTimeout(()=>{alert(data.message);},500)
 }
+async function getVisits(){
+    let url= "/guardVisits";
+    let res = await fetch(url);
+    let data = await res.json();
+    if(!data.length){
+        return
+    }
+    let row = "";
+
+    for(let idx in data){
+        let visit = data[idx];
+        row += "<tr>";
+        row += `<td>${Number(idx)+1}</td>`;
+        row += `<td>${visit.point.name}</td>`;
+        row += `<td>${visit.date}</td>`;
+        row += `<td>${visit.time}</td>`;
+        row += "</tr>";
+    }
+    document.getElementById("VisitTable").innerHTML = row;
+}
