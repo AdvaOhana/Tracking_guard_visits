@@ -53,8 +53,10 @@ function showEditForm(idx) {
             `<h3>Edit point</h3>
             <label for="EditPointName">Point Name:</label>
             <input type="text" id="EditPointName" placeholder="Enter new name">
+            <div id="edit-buttons">
             <button onclick="editPoint(${idx})">Edit</button>
-            <button onclick="backButton()">Back</button>`
+            <button onclick="backButton()">Back</button>
+            </div>`
 
     document.getElementById("EditPoint-Container").style.display="block";
     document.getElementById("EditPoint-Container").innerHTML= editForm;

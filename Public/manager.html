@@ -8,6 +8,13 @@
 </head>
 <body onload="showAllTables()">
     <h2 id="headLine-manager">Manage guards points</h2>
+    <div id="NewPoint-Container" class = "NewPoint-Container">
+        <h3>Add new point</h3>
+        <label for="PointName">Point Name:</label>
+        <input type="text" id="PointName" placeholder="Enter point name">
+        <button onclick="addPoints()">Add</button>
+    </div>
+    <div id="EditPoint-Container" class = "NewPoint-Container"></div>
     <div id="points-list">
     <h3>List of points</h3>
     <table>
@@ -22,13 +29,6 @@
         <tbody id="MainTable"></tbody>
     </table>
     </div>
-        <div id="NewPoint-Container" class = "NewPoint-Container">
-            <h3>Add new point</h3>
-            <label for="PointName">Point Name:</label>
-            <input type="text" id="PointName" placeholder="Enter point name">
-            <button onclick="addPoints()">Add</button>
-        </div>
-        <div id="EditPoint-Container" class = "NewPoint-Container"></div>
     <div id="tracking-visits">
     <h3>Tracking guards visits</h3>
         <table>

@@ -3,7 +3,6 @@
     margin: 0;
     box-sizing: border-box;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
-    font-size: 16px;
 }
 body{
     background: rgb(17, 45, 78);
@@ -40,6 +39,7 @@ button{
     border-radius: 5px;
     color: rgb(219, 226, 239);
     background: rgb(63, 114, 175);
+    font-size: 16px;
 }
 button:hover {
     color: rgb(17, 45, 78);
@@ -50,29 +50,34 @@ button:hover {
     text-align: center;
     color: rgb(219, 226, 239);
     font-size: 26px;
-
 }
 #points-list{
     display: block;
     justify-content: center;
     text-align: center;
     width: fit-content;
-    /*max-height: 100px;*/
+    max-height: 300px;
+    overflow-y: auto;
     margin: 0 auto;
     margin-top: 50px;
+    margin-bottom: 50px;
     color: rgb(249, 247, 247);
+    /*border: 1px solid rgb(249, 247, 247);*/
+    /*border-radius: 5px;*/
 
 }
 #tracking-visits{
     display: block;
     justify-content: center;
     width: fit-content;
+    max-height: 300px;
+    overflow-y: auto;
     margin: auto;
     margin-top: 30px;
     text-align: center;
     color:rgb(249, 247, 247);
-    border: 1px solid rgb(249, 247, 247);
-    border-radius: 5px;
+    /*border: 1px solid rgb(249, 247, 247);*/
+    /*border-radius: 5px;*/
 }
 table{
     text-align: center;
@@ -86,8 +91,11 @@ td,th{
 .NewPoint-Container{
     text-align: center;
     color:rgb(249, 247, 247);
-    margin: 20px;
+    margin: 50px auto;
+    padding: 10px;
+    width: fit-content;
     border: 1px solid rgb(249, 247, 247);
+    border-radius: 5px;
 }
 .NewPoint-Container > h3{
     padding: 15px ;
@@ -110,12 +118,29 @@ input{
     display: block;
 }
 footer{
-    position: absolute;
-    width: fit-content;
-    right: 20px;
-    bottom: 20px;
+    padding-left: 90%;
+    padding-bottom: 20px;
 }
 .headLine-guard{
     text-align: center;
     color: rgb(219, 226, 239);
+}
+#edit-buttons{
+    display: flex;
+    margin:10px auto;
+    width: fit-content;
+    gap: 10px;
+}
+.headLine-guard> h2{
+    margin-bottom: 50px;
+}
+.select-guard{
+    display: flex;
+    margin: 50px auto;
+    width: fit-content;
+}
+#guardPointSelect{
+    border-radius: 10px;
+    width: 100px;
+    margin-right: 20px;
 }

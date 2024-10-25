@@ -21,7 +21,7 @@ app.get("/guard", (req, res) => {
 })
 
 let cnt=0;
-let points=[{id:1,name:"adva"}];
+let points=[];
 
 app.get('/pointsList', (req, res) => {
     res.status(200).json(points);
