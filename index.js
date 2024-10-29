@@ -75,10 +75,13 @@ app.get('/guardVisits', (req, res) => {
 app.post('/guardVisits', (req, res) => {
     let date= new Date();
     let id=Number( req.body.id);
-    let visit={};
     let point= points.find((point)=>{
-      return  id===point.id
-    })
+        return id===point.id
+    });
+    if(!point){
+        return res.status(400).json({message:"Could not find point"});
+    }
+    let visit={};
     visit.point=point;
     visit.date= date.toLocaleDateString()
     visit.time= date.toLocaleTimeString()

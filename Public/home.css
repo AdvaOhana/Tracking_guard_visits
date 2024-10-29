@@ -62,9 +62,6 @@ button:hover {
     margin-top: 50px;
     margin-bottom: 50px;
     color: rgb(249, 247, 247);
-    /*border: 1px solid rgb(249, 247, 247);*/
-    /*border-radius: 5px;*/
-
 }
 #tracking-visits{
     display: block;
@@ -76,8 +73,6 @@ button:hover {
     margin-top: 30px;
     text-align: center;
     color:rgb(249, 247, 247);
-    /*border: 1px solid rgb(249, 247, 247);*/
-    /*border-radius: 5px;*/
 }
 table{
     text-align: center;
@@ -112,7 +107,6 @@ input{
 }
 #EditPoint-Container{
     display: none;
-
 }
 #NewPoint-Container{
     display: block;
